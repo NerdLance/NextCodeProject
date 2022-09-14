@@ -11,6 +11,12 @@ class Project extends Model
 
     protected $fillable = ['user_id', 'category_id', 'title', 'overview', 'functionality', 'difficulty', 'tags'];
 
+    public function scopeFilter($query, array $filters) {
+        if ($filters['category'] ?? false) {
+            $query->where('category_id', request('category'));
+        }
+    }
+
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }

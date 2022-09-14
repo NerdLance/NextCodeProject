@@ -11,10 +11,11 @@ class ProjectController extends Controller
 {
     public function index() {
         return view('projects.index', [
-            'projects' => Project::latest()->paginate(2),
+            'projects' => Project::latest()->filter(request(['category']))->withCount('votes')->paginate(2),
+            'projects_by_votes' => Project::withCount('votes')->filter(request(['category']))->orderBy('votes_count', 'desc')->get(5),
             'categories' => Category::get(),
-            'project_count' => Project::count()
-
+            'project_count' => Project::count(),
+            'category' => (request('category')) ? Category::where('id', request('category'))->first() : ''
         ]);
     }
 

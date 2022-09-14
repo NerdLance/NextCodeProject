@@ -15,9 +15,13 @@
                     @unless($categories->isEmpty())
                         <div class="categories-container p-6 bg-white border-b border-gray-200 flex flex-wrap justify-between">
                             <div class="font-bold">Categories:</div>
-                            @foreach($categories as $category)
+                            @foreach($categories as $cat)
                                 <div>
-                                    <a href="#category-{{$category->id}}" class='no-underline hover:underline'>{{$category->title}}</a>
+                                    @if($category && $cat->id == $category->id)
+                                        <a href="?category={{$cat->id}}" class='underline hover:underline'>{{$cat->title}}</a>
+                                    @else
+                                        <a href="?category={{$cat->id}}" class='no-underline hover:underline'>{{$cat->title}}</a>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
