@@ -7,11 +7,21 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row flex-wrap">
-            <div class="basis-full md:basis-2/3 md:pr-2 mb-4 md:mb-0">
+            <div class="basis-full md:pr-2 mb-4 md:mb-0">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         Most Recent Projects
                     </div>
+                    @unless($categories->isEmpty())
+                        <div class="categories-container p-6 bg-white border-b border-gray-200 flex flex-wrap justify-between">
+                            <div class="font-bold">Categories:</div>
+                            @foreach($categories as $category)
+                                <div>
+                                    <a href="#category-{{$category->id}}" class='no-underline hover:underline'>{{$category->title}}</a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endunless
                     <div class="p-6 bg-white border-b border-gray-200">
                         @unless($projects->isEmpty())
                         <table class='w-full'>
@@ -44,24 +54,6 @@
                         {{$projects->links()}}
                     </div>
                     @endunless
-                </div>
-            </div>
-            <div class="basis-full md:basis-1/3 md:pl-2">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <div class='text-lg'>Categories</div>
-                    </div>
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <div class='text-base'>
-                            @unless($categories->isEmpty())
-                                @foreach($categories as $category)
-                                    <div class="flex">
-                                        <a href="#category-{{$category->id}}" class='no-underline hover:underline'>{{$category->title}}</a>
-                                    </div>
-                                @endforeach
-                            @endunless
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

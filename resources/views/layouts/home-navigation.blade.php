@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="/">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <img width='40' height='40' src='{{asset("assets/images/code-screen.svg")}}' />
+                        <!--<x-application-logo class="block h-10 w-auto fill-current text-gray-600" />-->
                     </a>
                 </div>
 
@@ -52,6 +53,7 @@
                     <x-slot name="content">
                         <!-- Authentication -->
                         <x-dropdown-link :href="route('register')">{{ __('Register') }}</x-dropdown-link>
+                        <x-dropdown-link :href="route('login')">{{ __('Login') }}</x-dropdown-link>
                     </x-slot>
                     @endguest
                 </x-dropdown>
