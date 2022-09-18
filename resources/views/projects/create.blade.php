@@ -15,7 +15,7 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Project Title')" />
+                <x-label for="title" :value="__('Project Title')" />
 
                 <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
             </div>
